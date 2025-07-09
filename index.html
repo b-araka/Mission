@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="images/gift.png" type="image/x-icon">
+  <title>The Birthday Love Hunt </title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- BACKGROUND LAYER -->
+  <div class="background" id="bgLayer"></div>
+
+  <!-- OVERLAY CONTENT -->
+  <div class="landing" id="landing">
+    <div class="overlay">
+      <h1 class="title">Hey Love... 💌</h1>
+      <p class="subtitle" id="hint">I’ve been planning something for you...</p>
+
+      <input type="text" id="secretCode" placeholder="Enter the secret key 💘 " />
+      <button id="unlockBtn">Unlock Mission 🪄</button>
+
+      <p id="extraHint" class="hint-text">Hint : The cutest nickname she gave you</p> <!-- 👈 Hint appears here -->
+      <p id="finalMessage" class="typewriter-text"></p>
+      <!-- YES button that appears after typewriter -->
+<button id="yesBtn" style="display: none;">YES 💘</button>
+
+<!-- Mission intro that appears after YES -->
+<div id="missionIntro" class="mission-text" style="display: none;">
+  <p id="missionContent"></p>
+  <button id="startBtn" style="display: none;">Let’s Go 💖</button>
+</div>
+
+
+    </div>
+  </div>
+  <div id="warningScreen" class="warning-screen" style="display: none;">
+  <div class="warning-box">
+  
+ 
+    <h2>💌 Final Warning...</h2>
+<p>
+  You’re about to begin something unforgettable.<br><br>
+  This isn't just a game.  
+  <br><br>
+  Once you step in, there's no going back.  
+  <br><br>
+  You’ll need to follow every rule... and complete every task I’ve set for you.  
+  <br><br>
+  Only proceed if your heart is ready. 💘
+  <br><br>
+  Are you sure you want to continue?
+</p>
+
+    <div class="warning-buttons">
+      <button id="confirm">Yes, I’m ready 💘</button>
+      <button id="goBack">No, not yet 😅</button>
+    </div>
+  </div>
+</div>
+
+<div id="countdownOverlay" class="countdown-overlay" style="display: none;">
+  <div class="countdown-number" id="countdownNumber">3</div>
+</div>
+
+
+<!-- ROUNDS GRID CONTAINER -->
+<div id="roundsTimeline" class="rounds-screen" style="display: none;">
+  <h2 class="timeline-heading">💖 Love Levels: Birthday Edition</h2>
+<p class="rounds-intro">
+  Each round reveals a task and an award. You need to fulfill all conditions and follow instructions strictly. You will need to guess a secret code to reveal the round. The next round will only be unlocked once the previous one is completed. Do not forget to capture the moment. 💌 GOOD LuCK 💌<br>
+  
+</p>
+
+  <div class="rounds-grid">
+ 
+    <div class="round-card unlocked" data-round="1">
+      <div class="gift-lid"></div>
+      <div class="gift-box"></div>
+      <p class="round-label">🎁 Round 1<br><small>Bring Me Closer</small></p>
+        <div class="sparkle-container"></div>
+    </div>
+    <div class="round-card locked" data-round="2">
+      <div class="gift-lid"></div>
+      <div class="gift-box"></div>
+      <p class="round-label">🎁 Round 2<br><small>A Table for Two</small></p>
+       <div class="sparkle-container"></div>
+    </div>
+    <div class="round-card locked" data-round="3">
+      <div class="gift-lid"></div>
+      <div class="gift-box"></div>
+      <p class="round-label">🎁 Round 3<br><small>Marked Forever</small></p>
+        <div class="sparkle-container"></div>
+    </div>
+    <div class="round-card locked" data-round="4">
+      <div class="gift-lid"></div>
+      <div class="gift-box"></div>
+      <p class="round-label">🎁 Round 4<br><small>Hearts Unfiltered</small></p>
+       <div class="sparkle-container"></div>
+    </div>
+    <div class="round-card locked" data-round="5">
+      <div class="gift-lid"></div>
+      <div class="gift-box"></div>
+      <p class="round-label">🎁 Round 5<br><small>The Final Thriller</small></p>
+       <div class="sparkle-container"></div>
+    </div>
+  </div>
+</div>
+<!-- MOVING TO ROUND -->
+<div id="roundModal" class="round-modal" style="display: none;">
+  <div class="round-modal-content">
+    <span id="closeModal" class="close-btn">×</span>
+
+    <h2 class="modal-heading">💖 Round 1: Bring Me Closer</h2>
+    
+    <div class="modal-section">
+      <h4 class="section-title">💌 Condition</h4>
+      <p class="modal-text" id="conditionText">You must smile before starting.</p>
+    </div>
+
+    <div class="modal-section">
+      <h4 class="section-title">📝 Instructions</h4>
+      <p class="modal-text"  id="instructionText">Answer the simple riddle to guess the code. Your wife may help you.<br><I>1. It's a 2 word. <br>2.True love may be miles apart but is always very close to heart. <br> What relationship is this ?</I> </p>
+    </div>
+
+    <input type="text" id="roundCodeInput" placeholder="Enter the secret keyword 💘" />
+    <button id="submitRoundCode">Unlock Round ✨</button>
+    
+    <p id="errorMsg" class="error-msg" style="display: none;">Try again Love! 🥺</p>
+  </div>
+</div>
+
+<!-- TASK -->
+ <!-- TASK SCREEN FOR EACH ROUND -->
+<!-- TASK SCREEN FOR EACH ROUND -->
+<div id="taskScreen" class="task-screen" style="display: none;">
+  <div id="screenOverlay"></div>
+
+  <div class="task-wrapper">
+    
+
+    <h2 class="task-title" id="taskTitle">💖 ROUND 1: Bring Me Closer</h2>
+    <p class="arrival-line fade-delay-1" id="arrivalLine">🎉 WOHOO! You made it to Round 1!</p>
+    
+    <div class="task-box">
+      <p class="task-text fade-delay-2"><strong>✨ Task:</strong> <span id="taskText">Write her a sweet message that makes her melt.</span></p>
+      <p class="reward-text fade-delay-3"><strong>🎁 Reward:</strong> <span id="rewardText">Unlock her smile 😍</span></p>
+    </div>
+
+    <div class="task-buttons">
+      <button id="backToRounds">⬅ Back</button>
+      <button id="nextRound">Next ➜</button>
+    </div>
+  </div>
+</div>
+<!-- CINEMATIC FEEL -->
+
+
+
+
+
+
+  <audio id="bgMusic" src="./music/kya-sach-ho-tum.mp3" preload="auto"></audio>
+  <audio id="sparkleSound" src="./music/sparkle.mp3" preload="auto"></audio>
+    <audio id="roundMusic" src="./music/LoveLooksPretty.mp3" preload="auto"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
