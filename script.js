@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {  
   
  const bg = document.querySelector(".background");
-  bg.style.backgroundImage = "url('background1.jpg')";
+  bg.style.backgroundImage = "url('./images/background1.jpg')";
   bg.style.backgroundRepeat = "no-repeat";
   bg.style.backgroundPosition = "center";
   bg.style.backgroundSize = "cover";
-  bg.style.backgroundImage = "url('background1.jpg')";
+  bg.style.backgroundImage = "url('./images/background1.jpg')";
   function setupUnlockedCardHandlers() {
   document.querySelectorAll(".round-card.unlocked").forEach(card => {
     if (!card.classList.contains("click-ready")) {
@@ -96,7 +96,7 @@ function handleInput() {
 
   bgLayer.classList.add("bg-fade");
   setTimeout(() => {
-    bgLayer.style.backgroundImage = "url('background2.jpg')";
+    bgLayer.style.backgroundImage = "url('./images/background2.jpg')";
     bgLayer.classList.remove("bg-fade");
   }, 2000);
 
@@ -284,7 +284,7 @@ setTimeout(() => {
       arrival: "🎉 WOHOO! You made it to Round 1!",
       task: "The first task is you need to go get your wifey obviously. How could you spend your birthday without her.",
       reward: "It's waiting for you… but not just yet",
-      background: "starry-night.avif",
+      background: "./images/starry-night.avif",
       music: "./music/LoveLooksPretty.mp3"
     },
     2: {
@@ -292,7 +292,7 @@ setTimeout(() => {
   arrival: "🎉 A Romantic Twist Awaits...",
   task: "Head straight towards Megazone. ",
   reward: "Will be revealed soon ... 💘",
-  background: "dinner-date.jpg", // replace with your actual background image path
+  background: "./images/dinner-date.jpg", // replace with your actual background image path
    music: "./music/" // replace with your actual audio path
 },
     3: {
@@ -301,7 +301,7 @@ setTimeout(() => {
   task: "Your wifey has a sweet surprise for you. It’s time to mark this memory — Lets do a thumbprint together",
   reward: "A symbol of our forever bond.💘",
   background: "./images/starry-night.avif", // replace with your actual background image path
-  music: "A-Thousand-Years.mp3" // replace with your actual audio path
+  music: "./music/A-Thousand-Years.mp3" // replace with your actual audio path
 },
 4: {
   title: "💖 Round 4: Hearts Unfiltered",
@@ -309,7 +309,7 @@ setTimeout(() => {
   task: "Its your will it's your moment it's your heart to heart,Just say whatever you want,just ask whatever you want...It's your girl right there infront of you.💌",
   reward: "What’s better than a heart-to-heart, Sweetheart?But your wifey has a little thing for💘",
   background: "./images/dinner-date.jpg", // replace with your actual background image path
-  music: "music2.mp3" // replace with your actual audio path
+  music: "./music/music2.mp3" // replace with your actual audio path
 },
 5: {
   title: "💖Round 5: The Final Thriller",
