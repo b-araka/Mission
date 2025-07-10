@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   bg.style.backgroundRepeat = "no-repeat";
   bg.style.backgroundPosition = "center";
   bg.style.backgroundSize = "cover";
-  bg.style.backgroundImage = "url('./images/background1.jpg')";
+  bg.style.backgroundImage = "url('./images/dinner-date.jpg')";
   function setupUnlockedCardHandlers() {
   document.querySelectorAll(".round-card.unlocked").forEach(card => {
     if (!card.classList.contains("click-ready")) {
