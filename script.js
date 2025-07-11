@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {  
   
  const bg = document.querySelector(".background");
-  bg.style.backgroundImage = "url('./images/background1.jpg')";
+  bg.style.backgroundImage = "url('./images/bg1.avif')";
   bg.style.backgroundRepeat = "no-repeat";
   bg.style.backgroundPosition = "center";
   bg.style.backgroundSize = "cover";
