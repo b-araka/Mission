@@ -2,9 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <!-- Theme + iOS fullscreen support -->
+<meta name="theme-color" content="#000000">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
   <link rel="icon" href="images/gift.png" type="image/x-icon">
   <title>The Birthday Love Hunt </title>
+  <link rel="manifest" href="manifest.json">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -70,7 +77,7 @@
 <div id="roundsTimeline" class="rounds-screen" style="display: none;">
   <h2 class="timeline-heading">💖 Love Levels: Birthday Edition</h2>
 <p class="rounds-intro">
-  Each round reveals a task and an award. You need to fulfill all conditions and follow instructions strictly. You will need to guess a secret code to reveal the round. The next round will only be unlocked once the previous one is completed. Do not forget to capture the moment. 💌 GOOD LuCK 💌<br>
+  Each round reveals a task and an award. You need to fulfill all conditions and follow instructions strictly. You will need to guess a secret code to reveal the round. The next round will only be unlocked once the previous one is completed. Do not forget to capture the moment. 💌 GOOD LUCK 💌<br>
   
 </p>
 
@@ -107,6 +114,10 @@
        <div class="sparkle-container"></div>
     </div>
   </div>
+  <button id="revealFinalBtn" style="display: none;" class="reveal-final-btn">
+  🎁 FINISH
+</button>
+
 </div>
 <!-- MOVING TO ROUND -->
 <div id="roundModal" class="round-modal" style="display: none;">
@@ -133,7 +144,15 @@
 </div>
 
 <!-- TASK -->
- <!-- TASK SCREEN FOR EACH ROUND -->
+ <!-- TASK SCREEN LETTER TRANSITION-->
+  <!-- LOVE LETTER TRANSITION -->
+<div id="loveLetterScreen" class="love-letter-screen" style="display: none;">
+  <div class="love-letter-content">
+    <p id="loveLetterText" class="typewriter-text"></p>
+    <button id="revealTaskBtn">💖 Open the Letter</button>
+  </div>
+</div>
+
 <!-- TASK SCREEN FOR EACH ROUND -->
 <div id="taskScreen" class="task-screen" style="display: none;">
   <div id="screenOverlay"></div>
@@ -155,7 +174,28 @@
     </div>
   </div>
 </div>
-<!-- CINEMATIC FEEL -->
+
+<!-- FINAL SURPRISE SCREEN -->
+
+<div id="finalScreen" class="final-screen" style="display: none;">
+  <!-- Birthday Popup -->
+  <div id="birthdayPopup" class="birthday-popup">🎉 Happy Birthday, My Love! 🎂</div>
+
+  
+
+  <!-- Final Message Content: initially hidden -->
+  <div class="final-content" style="display: none;">
+    <h1 class="final-title">🎉 You Did It, My Love!</h1>
+    <p class="final-message">
+      Every smile, every riddle, every step —<br>
+      you made it through all 5 rounds. 💘<br><br>
+      But this isn’t the end... it’s a new beginning. <br><br>
+      Now close your eyes, turn around, and<br>
+      get ready for your biggest birthday surprise. 🎁✨
+    </p>
+    <button id="replayBtn">🔁 Replay the Journey</button>
+  </div>
+</div>
 
 
 
