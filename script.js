@@ -1,11 +1,16 @@
+
 document.addEventListener("DOMContentLoaded", () => {  
+   window.addEventListener("resize", () => {
+    document.documentElement.style.setProperty('--vh', `${window.innerHeight}px`);
+  });
+  window.dispatchEvent(new Event('resize'));
   
  const bg = document.querySelector(".background");
-  bg.style.backgroundImage = "url('./images/bg1.avif')";
+  bg.style.backgroundImage = "url('./images/background1.jpg')";
   bg.style.backgroundRepeat = "no-repeat";
   bg.style.backgroundPosition = "center";
   bg.style.backgroundSize = "cover";
-  bg.style.backgroundImage = "url('./images/dinner-date.jpg')";
+  bg.style.backgroundImage = "url('./images/newbg.avif')";
   function setupUnlockedCardHandlers() {
   document.querySelectorAll(".round-card.unlocked").forEach(card => {
     if (!card.classList.contains("click-ready")) {
@@ -268,16 +273,9 @@ if (round) {
 }
 
 });
+
 function showTaskScreen(roundNumber) {
-  
-const overlay = document.getElementById("screenOverlay");
-overlay.classList.add("active");
-
-setTimeout(() => {
-  overlay.classList.remove("active");
-}, 2000); // 2 seconds fade in then fade out
-
-  // You can define a data object for rounds:
+  // Define your round data
   const roundData = {
     1: {
       title: "💖 ROUND 1: Bring Me Closer",
@@ -288,78 +286,96 @@ setTimeout(() => {
       music: "./music/LoveLooksPretty.mp3"
     },
     2: {
-  title: "💖 ROUND 2: A Table for Two",
-  arrival: "🎉 A Romantic Twist Awaits...",
-  task: "Head straight towards Megazone. ",
-  reward: "Will be revealed soon ... 💘",
-  background: "./images/dinner-date.jpg", // replace with your actual background image path
-   music: "./music/" // replace with your actual audio path
-},
+      title: "💖 ROUND 2: A Table for Two",
+      arrival: "🎉 A Romantic Twist Awaits...",
+      task: "Head straight towards Megazone.",
+      reward: "Will be revealed soon ... 💘",
+      background: "./images/taskbg.jpg",
+      music: "./music/YouAreMine.mp3" // You can update this
+    },
     3: {
-  title: "💖 ROUND 3: Marked Forever",
-  arrival: "🎉 You made it till here, babes — ",
-  task: "Your wifey has a sweet surprise for you. It’s time to mark this memory — Lets do a thumbprint together",
-  reward: "A symbol of our forever bond.💘",
-  background: "./images/starry-night.avif", // replace with your actual background image path
-  music: "./music/A-Thousand-Years.mp3" // replace with your actual audio path
-},
-4: {
-  title: "💖 Round 4: Hearts Unfiltered",
-  arrival: "🎉Heyyy! That's the tougher one maybe but see you made it till here WOHOOOO!!",
-  task: "Its your will it's your moment it's your heart to heart,Just say whatever you want,just ask whatever you want...It's your girl right there infront of you.💌",
-  reward: "What’s better than a heart-to-heart, Sweetheart?But your wifey has a little thing for💘",
-  background: "./images/dinner-date.jpg", // replace with your actual background image path
-  music: "./music/music2.mp3" // replace with your actual audio path
-},
-5: {
-  title: "💖Round 5: The Final Thriller",
-  arrival: "🕵️ The game isn’t over yet, meri jaan...",
-  task: "Stay there. Don't leave. Message your wifey. Once she replies ask her: Jee Meri Jaan?",     
-  reward: "One last surprise awaits. 💘",
-  background: "./images/dinner-date.jpg", // replace with your actual background image path
-  // music: "./music/romantic-piano.mp3" // replace with your actual audio path
-},
-    // Add more rounds later...
+      title: "💖 ROUND 3: Marked Forever",
+      arrival: "🎉 You made it till here, babes — ",
+      task: "Your wifey has a sweet surprise for you. It’s time to mark this memory — Let's do a thumbprint together",
+      reward: "A symbol of our forever bond.💘",
+      background: "./images/starry-night.avif",
+      music: "./music/A-Thousand-Years.mp3"
+    },
+    4: {
+      title: "💖 Round 4: Hearts Unfiltered",
+      arrival: "🎉Heyyy! That's the tougher one maybe but see you made it till here WOHOOOO!!",
+      task: "Its your will it's your moment it's your heart to heart. Just say whatever you want, just ask whatever you want... It's your girl right there in front of you.💌",
+      reward: "What’s better than a heart-to-heart, Sweetheart? But your wifey has a little thing for you 💘",
+      background: "./images/dinner-date.jpg",
+      music: "./music/YouAreMyEverything.mp3"
+    },
+    5: {
+      title: "💖Round 5: The Final Thriller",
+      arrival: "🕵️ The game isn’t over yet, meri jaan...",
+      task: "Stay there. Don't leave. Message your wifey. Once she replies ask her: Jee Meri Jaan?",
+      reward: "One last surprise awaits. 💘",
+      background: "./images/dinner-date.jpg",
+      music: "./music/YouAreMyHoneyBunch.mp3"
+    }
   };
 
   const data = roundData[roundNumber];
   if (!data) return;
 
-  // Hide modal and show task screen
-  roundModal.style.display = "none";
-  document.getElementById("taskTitle").textContent = data.title;
-  document.getElementById("arrivalLine").textContent = data.arrival;
-  document.getElementById("rewardText").textContent = data.reward;
-  const taskEl = document.getElementById("taskText");
-typeWriterEffect2(taskEl, data.task, 60); // 50ms per letter, adjust for speed
+  // Set love letter content using data
+  document.getElementById("loveLetterText").textContent = `To the love of my life, Muhammad Anas Sheikh
 
+This next part of the journey is something special. Take a deep breath, and unwrap this with your heart.
 
-  // Change background and music
-  document.getElementById("bgLayer").style.backgroundImage = `url('${data.background}')`;
-// Stop intro music if playing
-const introMusic = document.getElementById("bgMusic");
-if (introMusic) {
-  introMusic.pause();
-  introMusic.currentTime = 0;
+Love,
+Your Wife 💌`;
+
+  // Show love letter screen
+  document.getElementById("loveLetterScreen").style.display = "flex";
+
+  // Remove previous listener by cloning the button
+  const oldBtn = document.getElementById("revealTaskBtn");
+  const newBtn = oldBtn.cloneNode(true);
+  oldBtn.parentNode.replaceChild(newBtn, oldBtn);
+
+  newBtn.addEventListener("click", () => {
+    // Hide letter screen and show task screen
+    document.getElementById("loveLetterScreen").style.display = "none";
+    document.getElementById("taskScreen").style.display = "flex";
+
+    // Populate task screen
+    document.getElementById("taskTitle").textContent = data.title;
+    document.getElementById("arrivalLine").textContent = data.arrival;
+    document.getElementById("rewardText").textContent = data.reward;
+    typeWriterEffect2(document.getElementById("taskText"), data.task, 60);
+
+    // Background
+    document.getElementById("bgLayer").style.backgroundImage = `url('${data.background}')`;
+
+    // Music
+    const introMusic = document.getElementById("bgMusic");
+    if (introMusic) {
+      introMusic.pause();
+      introMusic.currentTime = 0;
+    }
+
+    const roundMusic = document.getElementById("roundMusic");
+    roundMusic.pause();
+    roundMusic.currentTime = 0;
+    roundMusic.src = data.music;
+    roundMusic.load();
+    roundMusic.volume = 0.4;
+    roundMusic.play();
+  });
+
+  // Overlay animation
+  const overlay = document.getElementById("screenOverlay");
+  overlay.classList.add("active");
+  setTimeout(() => {
+    overlay.classList.remove("active");
+  }, 2000);
 }
 
-// Play round music
-const roundMusic = document.getElementById("roundMusic");
-
-// Stop any current round music
-roundMusic.pause();
-roundMusic.currentTime = 0;
-
-// Update source
-roundMusic.src = data.music;
-roundMusic.load(); // reload new source
-roundMusic.volume = 0.4;
-roundMusic.play();
-
-
-
-  document.getElementById("taskScreen").style.display = "flex";
-}
 
 function typeWriterEffect2(element, text, speed = 40) {
   element.textContent = "";
@@ -403,11 +419,71 @@ nextBtn.addEventListener("click", () => {
     setTimeout(() => {
       nextRoundCard.scrollIntoView({ behavior: "smooth", block: "center" });
     }, 400);
-  }
+} else {
+  // ✅ Instead of auto-showing final screen, show "Reveal Final" button
+  setTimeout(() => {
+    const revealBtn = document.getElementById("revealFinalBtn");
+    revealBtn.style.display = "inline-block";
+
+    revealBtn.addEventListener("click", () => {
+      revealBtn.style.display = "none";
+
+      const finalScreen = document.getElementById("finalScreen");
+      finalScreen.style.display = "flex";
+
+      document.getElementById("bgLayer").style.backgroundImage = "url('./images/Ending.jpg')";
+
+      // 🎵 Final music
+      roundMusic.pause();
+      roundMusic.src = "./music/kya-sach-ho-tum.mp3";
+      roundMusic.load();
+      roundMusic.volume = 0.4;
+      setTimeout(() => {
+        roundMusic.currentTime = 10;
+        roundMusic.play();
+      }, 300);
+
+      // 🎉 Show Birthday popup
+      const popup = document.getElementById("birthdayPopup");
+      popup.style.display = "block";
+
+      setTimeout(() => {
+        popup.style.display = "none";
+        const finalContent = document.querySelector(".final-content");
+        finalContent.style.display = "block";
+
+        const msgEl = finalContent.querySelector(".final-message");
+        const finalSideText = `It was not just a game
+My dher saara love and little effort for 
+"The Most Beautiful Soul I know" 
+I LOVE YOU SO MUCH 💘`;
+
+        typeWriterEffect2(msgEl, finalSideText, 40);
+      }, 4200);
+    });
+  }, 1000);
+}
 
   // Reset background and stop music
   document.getElementById("bgLayer").style.backgroundImage = "";
   // document.getElementById("bgMusic").pause();
+});
+document.getElementById("replayBtn").addEventListener("click", () => {
+  // Hide final screen
+  document.getElementById("finalScreen").style.display = "none";
+
+  // Reset background
+  document.getElementById("bgLayer").style.backgroundImage = "url('./images/background1.jpg')";
+
+  // Optionally reset music
+  roundMusic.pause();
+  roundMusic.currentTime = 0;
+
+  // Show the first intro screen (adjust this if needed)
+  document.getElementById("missionIntro").style.display = "block";
+
+  // Reset scroll
+  window.scrollTo(0, 0);
 });
 
 
