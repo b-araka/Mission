@@ -646,3 +646,204 @@ button#submitRoundCode:hover {
 }
 
 
+/* letter transition */
+.love-letter-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom right, #300319, #1d0536); /* dreamy dark purple */
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 9999;
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  padding: 20px;
+}
+
+.love-letter-content {
+  background: rgba(255, 255, 255, 0.05); /* soft glass look */
+  border: 2px dashed #ff9fd9;
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
+  backdrop-filter: blur(10px);
+  animation: fadeInUp 1s ease;
+}
+
+#loveLetterText {
+  color: #ffeefc;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  font-style: italic;
+  text-shadow: 0 0 8px rgba(255, 182, 193, 0.4); /* glowing effect */
+  margin-bottom: 30px;
+  white-space: pre-line; /* keeps line breaks */
+}
+
+#revealTaskBtn {
+  background: linear-gradient(135deg, #ff5f9e, #ff80bf);
+   font-family: 'Playfair Display', serif;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 28px;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(255, 105, 180, 0.4);
+  transition: all 0.3s ease;
+}
+
+#revealTaskBtn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(255, 105, 180, 0.5);
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.final-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: radial-gradient(ellipse at center, #1e002e, #000);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  z-index: 1000;
+  animation: fadeIn 1.2s ease-in-out;
+  font-family: 'Playfair Display', serif;
+}
+
+.final-content {
+  text-align: center;
+  padding: 40px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 2px dashed #ff80bf;
+  box-shadow: 0 0 20px rgba(255, 105, 180, 0.4);
+}
+
+.final-title {
+  font-size: 2.5rem;
+  color: #ffb6e6;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px #ff9edb;
+}
+
+.final-message {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #ffeaf5;
+  margin-bottom: 30px;
+}
+
+#replayBtn {
+  padding: 12px 30px;
+  background: linear-gradient(135deg, #ff5fa2, #ff80c2);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 105, 180, 0.4);
+}
+
+#replayBtn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(255, 105, 180, 0.5);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.birthday-popup {
+  font-size: 2.5rem;
+  color: #ffaddd;
+  text-shadow: 0 0 10px #ff64c4;
+  animation: popIn 1.2s ease, fadeOut 2s ease 3s forwards;
+  position: absolute;
+  top: 35%;
+  width: 100%;
+  text-align: center;
+  z-index: 2;
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+}
+
+.final-typewriter {
+  font-size: 1.4rem;
+  line-height: 2;
+  color: #ffeaf5;
+  text-align: center;
+  max-width: 90%;
+  margin: auto;
+  z-index: 1;
+}
+:root {
+  --vh: 100vh;
+}
+
+@media (max-width: 768px) {
+  .landing,
+  .final-screen,
+  .task-screen,
+  .love-letter-screen {
+    height: calc(var(--vh));
+  }
+}
+.reveal-final-btn {
+  margin-top: 30px;
+  padding: 14px 28px;
+  font-size: 1.1rem;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #ff5fa2, #ff80c2);
+  color: white;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 105, 180, 0.4);
+  animation: fadeIn 1.5s ease forwards;
+}
