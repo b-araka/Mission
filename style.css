@@ -651,7 +651,7 @@ button#submitRoundCode:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to bottom right, #300319, #1d0536); /* dreamy dark purple */
+  background: linear-gradient(to bottom right, #300319, #1d0536);
   position: fixed;
   top: 0;
   left: 0;
@@ -660,14 +660,15 @@ button#submitRoundCode:hover {
   z-index: 9999;
   color: #fff;
   font-family: 'Playfair Display', serif;
-  padding: 20px;
+  padding: 10px;
+  overflow-y: auto; /* allows scrolling if content overflows */
 }
 
 .love-letter-content {
-  background: rgba(255, 255, 255, 0.05); /* soft glass look */
+  background: rgba(255, 255, 255, 0.05);
   border: 2px dashed #ff9fd9;
   border-radius: 20px;
-  padding: 40px;
+  padding: 30px;
   max-width: 600px;
   width: 100%;
   text-align: center;
@@ -716,6 +717,43 @@ button#submitRoundCode:hover {
     transform: translateY(0);
   }
 }
+@media (max-width: 768px) {
+  .love-letter-content {
+    padding: 20px;
+    border-radius: 16px;
+    max-width: 70%;
+  }
+
+  #loveLetterText {
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+
+  #revealTaskBtn {
+    font-size: 1rem;
+    padding: 10px 24px;
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .love-letter-content {
+    padding: 20px;
+    border-radius: 16px;
+    max-width: 60%;
+  }
+  #loveLetterText {
+    font-size: 0.65rem;
+  }
+
+  #revealTaskBtn {
+    font-size: 0.65rem;
+    padding: 4px 10px;
+  }
+}
+
+
+
 .final-screen {
   position: fixed;
   top: 0;
@@ -846,4 +884,26 @@ button#submitRoundCode:hover {
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(255, 105, 180, 0.4);
   animation: fadeIn 1.5s ease forwards;
+
 }
+.stop-music-btn {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 99999;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border: 1px solid #ff9fd9;
+  padding: 10px 15px;
+  border-radius: 30px;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.stop-music-btn:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
