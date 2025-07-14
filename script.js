@@ -291,7 +291,7 @@ function showTaskScreen(roundNumber) {
       task: "Head straight towards Megazone.",
       reward: "Will be revealed soon ... 💘",
       background: "./images/taskbg.jpg",
-      music: "./music/YouAreMine.mp3" // You can update this
+      music: "./music/Night Changes.mp3" // You can update this
     },
     3: {
       title: "💖 ROUND 3: Marked Forever",
@@ -313,7 +313,7 @@ function showTaskScreen(roundNumber) {
       title: "💖Round 5: The Final Thriller",
       arrival: "🕵️ The game isn’t over yet, meri jaan...",
       task: "Stay there. Don't leave. Message your wifey. Once she replies ask her: Jee Meri Jaan?",
-      reward: "One last surprise awaits. 💘",
+      reward: "One last surprise awaits. Enjoy the song meanwhile it's specially for you💘",
       background: "./images/dinner-date.jpg",
       music: "./music/YouAreMyHoneyBunch.mp3"
     }
@@ -486,6 +486,32 @@ document.getElementById("replayBtn").addEventListener("click", () => {
   window.scrollTo(0, 0);
 });
 
+const toggleBtn = document.getElementById("toggleMusicBtn");
+const bgMusic = document.getElementById("bgMusic");
+const roundMusic = document.getElementById("roundMusic");
+
+toggleBtn.addEventListener("click", () => {
+  let anyMusicPlaying = false;
+
+  if (!bgMusic.paused) {
+    bgMusic.pause();
+    anyMusicPlaying = true;
+  } else if (!roundMusic.paused) {
+    roundMusic.pause();
+    anyMusicPlaying = true;
+  } else {
+    // Nothing is playing, so try to resume whichever has source
+    if (roundMusic.src) {
+      roundMusic.play();
+    } else if (bgMusic.src) {
+      bgMusic.play();
+    }
+  }
+
+  // Update button text
+  const musicPlaying = !bgMusic.paused || !roundMusic.paused;
+  toggleBtn.textContent = musicPlaying ? "🔇 Pause Music" : "▶️ Resume Music";
+});
 
 
 
