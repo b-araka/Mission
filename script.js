@@ -510,7 +510,7 @@ toggleBtn.addEventListener("click", () => {
 
   // Update button text
   const musicPlaying = !bgMusic.paused || !roundMusic.paused;
-  toggleBtn.textContent = musicPlaying ? "🔇 Pause Music" : "▶️ Resume Music";
+  toggleBtn.textContent = musicPlaying ? "🔇" : "🔊";
 });
 
 
