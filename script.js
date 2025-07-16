@@ -455,7 +455,7 @@ nextBtn.addEventListener("click", () => {
         const msgEl = finalContent.querySelector(".final-message");
         const finalSideText = `It was not just a game
 My dher saara love and little effort for 
-"The Most Beautiful Soul I know" 
+"The Most Beautiful Soul" I know 
 I LOVE YOU SO MUCH 💘`;
 
         typeWriterEffect2(msgEl, finalSideText, 40);
